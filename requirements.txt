@@ -1,0 +1,4 @@
+faker>=24.0
+pandas>=2.2
+streamlit>=1.40
+plotly>=5.20
