@@ -26,6 +26,7 @@ Thumbs.db
 data/*.db
 data/*.sqlite
 data/*.sqlite3
+data/csv/*.csv
 *.log
 
 # Secrets
