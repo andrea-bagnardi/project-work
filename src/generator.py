@@ -113,8 +113,9 @@ CANCEL_REASONS = [
 GENERIC_NOTE = "richiesta gestita regolarmente"
 
 # Distribuzione a coda lunga delle Request per Customer.
-# (numero di customer, (min_request, max_request)). Somma = 200 customer.
-# 80 customer su 200 hanno >=2 Request -> retention attesa 40%.
+# (numero di customer, (min, max)). Somma = 200 customer.
+# 80 customer su 200 hanno >=2 Request, distribuzione utile a dare forma realistica
+# al volume di Request e ad alimentare il KPI secondario retention (vedi queries_specs).
 RETENTION_BUCKETS = [
     (120, (1, 1)),
     (32, (2, 2)),
