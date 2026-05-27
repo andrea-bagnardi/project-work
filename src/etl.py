@@ -562,16 +562,21 @@ DDL_STATEMENTS = [
 
 INDEX_STATEMENTS = [
     "CREATE INDEX idx_request_fact_customer ON request_fact (customer_key)",
-    "CREATE INDEX idx_request_fact_time ON request_fact (date_key)",
+    "CREATE INDEX idx_request_fact_date ON request_fact (date_key)",
     "CREATE INDEX idx_request_fact_status ON request_fact (status)",
     "CREATE INDEX idx_customer_dim_fiscal ON customer_dim (fiscal_code_hash, is_current)",
     "CREATE INDEX idx_customer_dim_validity "
     "ON customer_dim (fiscal_code_hash, valid_from, valid_to)",
+    # idx_customer_dim_province — accelera filtro what-if zona (queries_specs §9.2, figura5 §8)
+    "CREATE INDEX IF NOT EXISTS idx_customer_dim_province "
+    "ON customer_dim (province, is_current)",
+    # idx_supplier_dim_category — accelera filtro what-if categoria (queries_specs §9.2, figura5 §8)
+    "CREATE INDEX IF NOT EXISTS idx_supplier_dim_category ON supplier_dim (category)",
 ]
 
 
 def execute_ddl(conn: sqlite3.Connection) -> None:
-    """Crea le 5 tabelle e gli indici del DWH."""
+    """Crea le 5 tabelle e i 7 indici del DWH."""
     cursor = conn.cursor()
     for statement in DDL_STATEMENTS:
         cursor.execute(statement)

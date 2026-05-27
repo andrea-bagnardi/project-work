@@ -80,7 +80,7 @@ HOLIDAYS = {
 HOUR_BANDS = [(9, 12), (12, 14), (14, 18), (18, 20)]
 HOUR_BAND_P = [0.35, 0.05, 0.50, 0.10]
 
-# Configurazione delle 5 categorie di Supplier.
+# Configurazione delle 4 categorie di Supplier.
 # count = numero di supplier, price = range €, duration = range minuti.
 CATEGORY_CONFIG = {
     "driving_school":     {"count": 3, "price": (35.0, 50.0), "duration": (45, 60)},
